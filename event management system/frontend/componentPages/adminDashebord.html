@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin-dashboard</title>
+    <link rel="stylesheet" href="../CSS/admin.css" />
+    <style>
+      button {
+        margin: 30px;
+        background-color: rgb(29, 29, 86);
+        padding-top: 0px;
+        padding-bottom: 0px;
+        margin-top: 6vh;
+        border-radius: 3px;
+        color: white;
+        margin-left: 30px;
+      }
+      button a {
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    
+    <div class="admin-dashboard">
+      <header class="admin-header">
+        <p>Event Management System</p>
+        <nav>
+          <ul>
+            <li><a class="current" href="adminhome.html">Home</a></li>
+  
+            <li><a class="current1" href="adminDashebord.html">Dashboard</a></li>
+          </ul>
+        </nav>
+        <div class="logout">
+          <button><a href="../home.html">Logout</a></button>
+        </div>
+      </header>
+      <hr />
+
+      <section class="personal-info-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <div class="card personal-info-card">
+                        <div class="card-header text-center">
+                            <h4>Your Personal Information</h4>
+                        </div>
+                        <div class="card-body">
+                            <!-- Display Personal Info with IDs -->
+                            <ul class="list-group" id="personalInfoList">
+                                <li class="list-group-item">
+                                    <strong>ID:</strong> <span id="idDisplay">12345</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Name:</strong> <span id="nameDisplay">John Doe</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Email:</strong> <span id="emailDisplay">j@gmail.com</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Phone:</strong> <span id="phoneDisplay">+251 911 234 567</span>
+                                </li>
+                            </ul>
+                            
+                            <!-- Edit Button -->
+                            <div class="text-center mt-3">
+                                <button class="btn btn-primary" id="editBtn">Edit</button>
+                            </div>
+    
+                            <!-- Edit Form (Initially hidden) -->
+                            <div id="editForm" style="display: none; margin-top: 20px;">
+                                <h5>Edit Personal Information</h5>
+                                <form id="editInfoForm">
+                                    <div class="form-group">
+                                        <label for="nameInput">Name</label>
+                                        <input type="text" class="form-control" id="nameInput" value="John Doe">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="emailInput">Email</label>
+                                        <input type="email" class="form-control" id="emailInput" value="j@gmail.com">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phoneInput">Phone</label>
+                                        <input type="tel" class="form-control" id="phoneInput" value="+251 911 234 567">
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <button type="submit" class="btn btn-success">Save</button>
+                                        <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+
+      <div class="main-content">
+        <section id="dashboard">
+          <h2>Dashboard Overview</h2>
+          <div class="stats-cards">
+            <div class="card">Total Events: 120</div>
+            <div class="card">Total Users: 500</div>
+            <div class="card">Reservations: 300</div>
+          </div>
+        </section>
+        <section id="events">
+          <h2>Manage Events</h2>
+          <button id="addEventBtn">Add New Event</button>
+          <table>
+            <thead>
+              <tr>
+                <th>Event Name</th>
+                <th>Organizer</th>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="eventTableBody">
+              <tr>
+                <td>Concert Night</td>
+                <td>John Doe</td>
+                <td>2025-01-15</td>
+                <td>Music</td>
+                <td>
+                  <button class="edit-btn">Edit</button> |
+                  <button class="delete-btn">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Tech Conference</td>
+                <td>Jane Smith</td>
+                <td>2025-02-20</td>
+                <td>Conference</td>
+                <td>
+                  <button class="edit-btn">Edit</button> |
+                  <button class="delete-btn">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+    
+
+    <div id="eventModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <form id="eventForm">
+          <h2>Create New Event</h2>
+          <label for="eventName">Event Name:</label>
+          <input type="text" id="eventName" name="eventName" required />
+
+          <label for="organizer">Organizer:</label>
+          <input type="text" id="organizer" name="organizer" required />
+
+          <label for="eventDate">Event Date:</label>
+          <input type="date" id="eventDate" name="eventDate" required />
+
+          <label for="eventTime">Event Time:</label>
+          <input type="time" id="eventTime" name="eventTime" required />
+
+          <label for="location">Location:</label>
+          <input type="text" id="category" name="category" required />
+
+          <label for="category">Category:</label>
+          <select id="category" name="category" required>
+            <option value="">Select a category</option>
+            <option value="Business">Business Events</option>
+            <option value="Music">Music Events</option>
+            <option value="Conference">Conference</option>
+            <option value="Festival">Festivals</option>
+          </select>
+
+          <label for="eventImage">Event Image:</label>
+          <input
+            type="file"
+            id="eventImage"
+            name="eventImage"
+            accept="image/*"
+          />
+
+          <button type="submit">Create Event</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="../TS/app.js"></script>
+
+    <footer>
+      <p>&copy; 2024 Event Management System. All rights reserved.</p>
+    </footer>
+
+    <script>
+      document.getElementById("editBtn").addEventListener("click", function () {
+        document.getElementById("editForm").style.display = "block";
+        document.getElementById("editBtn").style.display = "none";
+      });
+
+      document
+        .getElementById("cancelBtn")
+        .addEventListener("click", function () {
+          document.getElementById("editForm").style.display = "none";
+          document.getElementById("editBtn").style.display = "inline-block";
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../CSS/login.css">
+</head>
+<body>
+   <div class="login-box">
+      <div class="login-header">
+        <header>Login</header>
+      </div>
+      <form action="#" method="POST">
+        
+        <div class="input-box" id="role-select-box">
+            <select id="user-type" class="input-field" onchange="changeForm()">
+                <option value="none" disabled selected>Select Role</option>
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+            </select>
+        </div>
+
+        <div class="input-box" id="email-box" style="display: none;">
+            <input type="email" class="input-field" placeholder="Email" autocomplete="off" required id="email">
+        </div>
+
+        <div class="input-box" id="password-box" style="display: none;">
+            <input type="password" class="input-field" placeholder="Password" autocomplete="off" required id="password">
+            <span class="eye-icon" id="eye-icon" onclick="togglePassword()">
+                🙈
+            </span>
+        </div>
+
+        <div class="input-box" id="admin-id-box" style="display: none;">
+            <input type="text" class="input-field" placeholder="Admin ID" autocomplete="off" id="admin-id">
+        </div>
+
+        <div class="forgot" style="display: none;" id="forgot-box">
+            <section>
+                <input type="checkbox" id="check">
+                <label for="check">Remember me</label>
+            </section>
+            <section>
+                <a href="#">Forgot password</a>
+            </section>
+        </div>
+        <div class="input-submit" style="display: none;" id="submit-box">
+            <button type="submit" class="submit-btn" id="submit"></button>
+            <label for="submit">Sign In</label>
+        </div>
+      </form>
+      <div class="sign-up-link" style="display: none;" id="sign-up-link">
+        <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+      </div>
+   </div>
+
+   <script>
+      function changeForm() {
+          var userType = document.getElementById("user-type").value;
+          var roleSelectBox = document.getElementById("role-select-box");
+          var emailBox = document.getElementById("email-box");
+          var passwordBox = document.getElementById("password-box");
+          var adminIdBox = document.getElementById("admin-id-box");
+          var forgotBox = document.getElementById("forgot-box");
+          var submitBox = document.getElementById("submit-box");
+          var signUpLink = document.getElementById("sign-up-link");
+
+          roleSelectBox.style.display = "none";
+          emailBox.style.display = "block";
+          passwordBox.style.display = "block";
+
+          if (userType === "admin") {
+              adminIdBox.style.display = "block";
+          } else {
+              adminIdBox.style.display = "none";
+          }
+
+          forgotBox.style.display = "flex";
+          submitBox.style.display = "flex";
+          signUpLink.style.display = "block";
+      }
+
+      function togglePassword() {
+          var passwordField = document.getElementById("password");
+          var eyeIcon = document.getElementById("eye-icon");
+
+          if (passwordField.type === "password") {
+              passwordField.type = "text";
+              eyeIcon.textContent = "👁️";   
+          } else {
+              passwordField.type = "password"; 
+              eyeIcon.textContent = "🙈";      
+          }
+      }
+   </script>
+</body>
+</html>

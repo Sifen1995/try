@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up Form</title>
+    <link rel="stylesheet" href="../CSS/signup.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="login-box">
+      <div class="login-header">
+        <header class="he10px">Sign Up</header>
+      </div>
+
+      
+      <div class="input-box">
+        <div class="role-selection">
+          <label for="role" class="role-label">Select Role:</label>
+          <div class="role-options">
+            <div class="role-option">
+              <input
+                type="radio"
+                id="client"
+                name="role"
+                value="Client"
+                checked
+              />
+              <label for="client">Client</label>
+            </div>
+            <div class="role-option">
+              <input type="radio" id="admin" name="role" value="Admin" />
+              <label for="admin">Admin</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  
+      <div class="input-box">
+        <input
+          type="text"
+          id="name"
+          class="input-field"
+          placeholder="Full Name"
+          required
+        />
+        <input
+          type="email"
+          id="email"
+          class="input-field"
+          placeholder="Email Address"
+          required
+        />
+        <input
+          type="tel"
+          id="phone"
+          class="input-field"
+          placeholder="Phone Number"
+          required
+        />
+
+      
+        <div class="password-container">
+          <input
+            type="password"
+            id="password"
+            class="input-field"
+            placeholder="Password"
+            required
+          />
+          <i
+            id="togglePassword"
+            style="height: 10px; width: 10px"
+            class="fa fa-eye-slash"
+          ></i>
+        </div>
+        <div class="password-container">
+          <input
+            type="password"
+            id="confirm-password"
+            class="input-field"
+            placeholder="Confirm Password"
+            required
+          />
+          <i
+            id="toggleConfirmPassword"
+            style="height: 10px; width: 10px"
+            class="fa fa-eye-slash"
+          ></i>
+        </div>
+      </div>
+
+    
+      <div class="input-submit">
+        <button type="submit" id="submit" class="submit-btn">
+          <label>Sign Up</label>
+        </button>
+      </div>
+
+    
+      <div id="error-container" style="display: none; color: red"></div>
+
+    
+      <div class="sign-up-link">
+        Already have an account? <a href="login.html">Login here</a>
+      </div>
+    </div>
+
+    <style>
+
+      .role-selection {
+        margin-bottom: 20px;
+      }
+
+      .role-label {
+        font-weight: bold;
+        margin-right: 10px;
+      }
+
+      .role-options {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .role-option {
+        display: flex;
+        align-items: center;
+      }
+
+      .role-option input {
+        margin-right: 5px;
+      }
+
+      
+      .password-container {
+        position: relative;
+      }
+
+      .password-container .input-field {
+        padding-right: 40px; 
+      }
+
+      .password-container i {
+        position: absolute;
+        top: 37%;
+        right: 25px;
+        transform: translateY(-50%);
+        cursor: pointer;
+      }
+
+      
+      .submit-btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        background-color: #222;
+        color: white;
+        border-radius: 5px;
+        border: none;
+      }
+
+      .submit-btn:hover {
+        background-color: #000;
+      }
+    </style>
+
+    <script>
+      
+      function togglePasswordVisibility(inputId, iconId) {
+        const input = document.getElementById(inputId);
+        const icon = document.getElementById(iconId);
+
+        icon.addEventListener("click", () => {
+          const isPassword = input.type === "password";
+          input.type = isPassword ? "text" : "password";
+          icon.classList.toggle("fa-eye");
+          icon.classList.toggle("fa-eye-slash");
+        });
+      }
+
+      togglePasswordVisibility("password", "togglePassword");
+      togglePasswordVisibility("confirm-password", "toggleConfirmPassword");
+    </script>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+      const passwordRequirements = {
+        uppercase: /[A-Z]/,
+        lowercase: /[a-z]/,
+        number: /[0-9]/,
+        specialCharacter: /[!@#$%^&*(),.?":{}|<>]/,
+      };
+
+      
+      document.getElementById("submit").addEventListener("click", function (e) {
+        e.preventDefault(); 
+
+        const errorContainer = document.getElementById("error-container");
+        errorContainer.style.display = "none"; 
+        errorContainer.textContent = "";
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const confirmPassword = document
+          .getElementById("confirm-password")
+          .value.trim();
+
+        
+        if (!name || !email || !phone || !password || !confirmPassword) {
+          showError("All fields are required.");
+          return;
+        }
+
+        
+        if (!isValidPassword(password)) {
+          showError("Your password must be strong.");
+          return;
+        }
+
+        
+        if (password !== confirmPassword) {
+          showError("Passwords do not match.");
+          return;
+        }
+
+        
+        alert("You have successfully registered! 🎉");
+        document.querySelector("form").reset();
+      });
+
+      
+      function showError(message) {
+        const errorContainer = document.getElementById("error-container");
+        errorContainer.style.display = "block";
+        errorContainer.textContent = message;
+      }
+
+      
+      function isValidPassword(password) {
+        return (
+          passwordRequirements.uppercase.test(password) &&
+          passwordRequirements.lowercase.test(password) &&
+          passwordRequirements.number.test(password) &&
+          passwordRequirements.specialCharacter.test(password)
+        );
+      }
+    </script>
+  </body>
+</html>

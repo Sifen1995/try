@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reservation</title>
+    <link rel="stylesheet" href="../CSS/reservation.css">
+    
+</head>
+<body>
+    <header>
+      <a href="../componentPages/attendee-home.html" class="back-arrow">&#8592;</a>
+     </header>
+     <hr/>
+     <main>
+        <div class="event-banner">
+            <img src="../ASSETS/images/hamza-nouasria-8z6sqG0RnXg-unsplash.jpg" alt="">
+        </div>
+
+        <div class="wraper">
+        <div class="event-description">
+            <h1>WORLD AFRIKA FESTIVAL ADDIS</h1>
+            <div class="description">
+            <h2>Date and Time</h2>
+            <p>January 4 · 8pm - January 5 · 3am EAT</p>
+           </div>
+
+           <div class="description">
+            <h2>Organizer</h2>
+            <p>Habesha Entertaiment</p>
+           </div>
+
+           <div class="description">
+            <h2>Location</h2>
+            <p>Ghion Hotel | Stadium <br>
+              Ras Desta Damtew Street Addis Ababa, Addis Ababa</p>
+           </div>
+
+           <div class="description">
+            <h2>About event</h2>
+            <p>WORLD AFRIKA ADDIS FESTIVAL is coming to Addis Ababa on Saturday, January 4th presented by Arada!</p>
+           </div>
+        </div>
+
+        <div class="reservation">
+            <img src="../ASSETS/images/calendar.png" alt="">
+            <div>
+                <button type="button" class="reserveBtn">Reserv</button>
+            </div>
+        </div>
+        </div>   
+
+        <div id="reservationModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div class="checkout-form">
+            <h2>Contact information</h2>
+            <p>
+            
+              <span class="required">* Required</span>
+            </p>
+            <form>
+              <div class="form-row">
+                <input type="text" placeholder="First name *" required />
+                <input type="text" placeholder="Last name *" required />
+              </div>
+              <div class="form-row">
+                <input type="email" placeholder="Email address *" required />
+                <input type="email" placeholder="Confirm email *" required />
+              </div>
+             
+              <p class="terms">
+                By selecting Register, I agree to the
+                <a href="#">event managment Terms of Service</a>.
+              </p>
+              <button type="submit" class="register-button">Register</button>
+            </form>
+            <footer>
+              <p>Powered by <a href="#">event managment</a></p>
+            </footer>
+          </div>
+        </div>
+        </div>
+      
+     </main>
+    
+     <footer>
+      <p>&copy; 2024 Event Management System. All rights reserved.</p>
+  </footer>
+     
+    <script src="../TS/app.js"></script>
+
+</body>
+</html>
